@@ -1,0 +1,21 @@
+{% extends 'shop/base.html' %}
+{% block title %} Список продуктов {% endblock %}
+{% block content %}
+    <h1>Ассортимент</h1>
+    <h1>Категории</h1>
+    <ul>
+    {% for category in categories %}
+        <li>
+            <a href="">{{ category.name }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+    <h3>Товары</h3>
+    {% for el in products %}
+    <ul>
+        <li>
+            {{ el.name }}
+        </li>
+    </ul>
+    {% endfor %}
+{% endblock %}
