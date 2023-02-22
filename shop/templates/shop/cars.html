@@ -1,0 +1,51 @@
+{% extends 'shop/base.html' %}
+{% block title %} Список продуктов {% endblock %}
+{% block content %}
+    <h1>Ассортимент</h1>
+    <h1>Легковые автомобили</h1>
+    <h2>Тип транспорта</h2>
+        <ul>
+        {% for type in categories.vehicle_type.all %}
+            <li>{{ type }}</li>
+        {% endfor %}
+        </ul>
+    <h2>Тип масла</h2>
+    <ul>
+    {% for type in oil_types %}
+        <li>{{ type }}</li>
+    {% endfor %}
+    </ul>
+    <h2>Вязкость</h2>
+    <ul>
+    {% for type in visc %}
+        <li>{{ type }}</li>
+    {% endfor %}
+    </ul>
+    <h2>Тип трансмиссии</h2>
+    <ul>
+    {% for type in transmission %}
+        <li>{{ type }}</li>
+    {% endfor %}
+    </ul>
+    <h2>Состав</h2>
+    <ul>
+    {% for type in compound %}
+        <li>{{ type }}</li>
+    {% endfor %}
+    </ul>
+    <h2>Топливо</h2>
+    <ul>
+    {% for type in fuel %}
+        <li>{{ type }}</li>
+    {% endfor %}
+    </ul>
+    <h3>Товары</h3>
+    {% for el in products %}
+    <ul>
+        <li>
+            <a href="{{ el.get_url }}">{{ el.name }}</a>
+        </li>
+    </ul>
+    {% endfor %}
+
+{% endblock %}

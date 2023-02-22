@@ -10,6 +10,8 @@
         </li>
     {% endfor %}
     </ul>
+    {% if category %}
+
     <h3>Товары</h3>
     {% for el in products %}
     <ul>
@@ -18,4 +20,5 @@
         </li>
     </ul>
     {% endfor %}
+    {% endif %}
 {% endblock %}
