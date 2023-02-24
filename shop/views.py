@@ -11,33 +11,22 @@ def show_category_list(request):
 
     return render(request, 'shop/categories.html', data)
 
-def show_product_list(request, category_slug = None):
+def show_product_list(request, category_id = None):
     category = None
-    categories = models.Category.objects.all()
-    vehic_types = models.VehicleType.objects.all()
-    oil_types = models.OilType.objects.all()
-    viscosity = models.Viscosity.objects.all()
-    transmission = models.Transmission.objects.all()
-    compound = models.Compound.objects.all()
-    fuel = models.Fuel.objects.all()
+    filts = models.Filter.objects.all()
     products = models.Product.objects.all()
-    if category_slug:
-        category = get_object_or_404(models.Category, slug=category_slug)
+    if category_id:
+        category = get_object_or_404(models.Category, id=category_id)
+        filts = get_object_or_404(models.Filter, id=category_id)
         products = models.Product.objects.filter(category=category)
 
     data = {
         'category': category,
-        'categories': categories,
-        'vehic_types': vehic_types,
-        'oil_types': oil_types,
-        'visc': viscosity,
-        'transmission': transmission,
-        'compound': compound,
-        'fuel': fuel,
+        'filts': filts,
         'products': products,
     }
 
-    return render(request, f'shop/{category_slug}.html', data)
+    return render(request, f'shop/product_list.html', data)
 
 
 
